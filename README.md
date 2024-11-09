@@ -71,7 +71,7 @@ evilpuppet:
 ```
 
 >### info
-Also, all additional information is listed in the "Problems" section. Read, ask your questions, share your knowledge in the Discussion section.
+Also, all additional information is listed in the "issues" section. Read, ask your questions, share your knowledge in the Discussion section.
 Whenever possible, we will post new PHISHLETS / Information about tool customization. You also need to participate in order to develop this project.
 
 Evilginx 3 [PHISHLET] by Evi1Grey5 [CUSTOM CREATION / FREE / DEVELOPMENT]

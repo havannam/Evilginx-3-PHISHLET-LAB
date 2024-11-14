@@ -70,7 +70,7 @@ evilpuppet:
       abort: true
 ```
 
-#### We also added Puppeteer to Evilginx and added some modifications to the http_proxy section.go and fish let.go. It turned out to be a juicy mod.
+#### We also added Puppeteer to Evilginx and added some modifications to the http_proxy.go and phishlet.go. It turned out to be a juicy mod.
 ![Screenshot_15](https://github.com/user-attachments/assets/2b94ed28-e7c7-4a0e-8dd0-2024cc430bc1)
 
 #5 Puppeteer integration with Evilginx 

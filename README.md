@@ -76,7 +76,7 @@ evilpuppet:
 #5 Puppeteer integration with Evilginx 
 
 Evilginx X Puppeteer
-https://github.com/Evi1Grey5/Evilginx-3-PHISHLET-LAB/issues/5
+https://github.com/Evi1Grey5/Evilginx-3-PHISHLET-LAB/issues/13
 
 
 >### info

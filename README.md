@@ -70,18 +70,31 @@ evilpuppet:
       abort: true
 ```
 
-#### We also added Puppeteer to Evilginx and added some modifications to the http_proxy.go and phishlet.go. It turned out to be a juicy mod.
-![Screenshot_15](https://github.com/user-attachments/assets/2b94ed28-e7c7-4a0e-8dd0-2024cc430bc1)
 
 #5 Puppeteer integration with Evilginx 
 
 Evilginx X Puppeteer
 https://github.com/Evi1Grey5/Evilginx-3-PHISHLET-LAB/issues/13
 
+# Evilginx 3.9.0
+<img align="left" src="https://github.com/user-attachments/assets/67c5cb62-7c60-40b2-bb0e-4a30eaeb2949" width="450" height="550">
+#### We also added Puppeteer to Evilginx and added some modifications to the http_proxy.go and phishlet.go. It turned out to be a juicy mod.
+
+____________________
+We decided to make a good mod for Evilginx. By adding Evil Puppet to it / Sending notifications via Discard / Module for generating PHISHLETs, collecting configurations via Burp Suite [ Functionality:
+
+Template Generation: The module can create various violet templates that mimic legitimate websites.
+Content Customization: The user can customize text, images, and other elements to make the phishlet more believable.
+Integration with Burp Suite: The module can be integrated into Burp Suite to facilitate the testing and vulnerability analysis process.
+Automation: Allows you to quickly create many phishlets for different scenarios.]
+
+
+____________________
 
 >### info
 Also, all additional information is listed in the "issues" section. Read, ask your questions, share your knowledge in the Discussion section.
 Whenever possible, we will post new PHISHLETS / Information about tool customization. You also need to participate in order to develop this project.
+____________________
 
 Evilginx 3 [PHISHLET] by Evi1Grey5 [CUSTOM CREATION / FREE / DEVELOPMENT]
 <img align="left" src="https://injectexp.dev/assets/img/logo/logo1.png">

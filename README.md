@@ -81,7 +81,7 @@ https://github.com/Evi1Grey5/Evilginx-3-PHISHLET-LAB/issues/13
 #### We also added Puppeteer to Evilginx and added some modifications to the http_proxy.go and phishlet.go. It turned out to be a juicy mod.
 
 ____________________
-We decided to make a good mod for Evilginx. By adding Evil Puppet to it / Sending notifications via Discard / Module for generating PHISHLETs, collecting configurations via Burp Suite [ Functionality:
+We decided to make a good mod for Evilginx. By adding Evil Puppet to it / Sending notifications via Discord / Module for generating PHISHLETs, collecting configurations via Burp Suite [ Functionality:
 
 Template Generation: The module can create various violet templates that mimic legitimate websites.
 Content Customization: The user can customize text, images, and other elements to make the phishlet more believable.

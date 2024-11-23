@@ -80,16 +80,28 @@ https://github.com/Evi1Grey5/Evilginx-3-PHISHLET-LAB/issues/13
 <img align="left" src="https://github.com/user-attachments/assets/67c5cb62-7c60-40b2-bb0e-4a30eaeb2949" width="450" height="550">
 #### We also added Puppeteer to Evilginx and added some modifications to the http_proxy.go and phishlet.go. It turned out to be a juicy mod.
 
-____________________
+________________________________________
 We decided to make a good mod for Evilginx. By adding Evil Puppet to it / Sending notifications via Discord / Module for generating PHISHLETs, collecting configurations via Burp Suite [ Functionality:
 
 Template Generation: The module can create various violet templates that mimic legitimate websites.
 Content Customization: The user can customize text, images, and other elements to make the phishlet more believable.
 Integration with Burp Suite: The module can be integrated into Burp Suite to facilitate the testing and vulnerability analysis process.
 Automation: Allows you to quickly create many phishlets for different scenarios.]
+________________________________________
 
 
-____________________
+
+
+
+#### Adding "interceptors" to Evilginx // 
+________________________________________
+- You will be able to monitor and analyze HTTP requests and WebSocket messages that pass through your Evilginx server. This can help in understanding user behavior and identifying potential vulnerabilities.
+- Data collection. Intercepting requests may allow you to collect information about users, such as credentials, access tokens, and other sensitive information, if you use Evilginx for phishing.
+- Debugging. If you are developing or testing your Evilginx templates, JavaScript code integration can help you debug and identify functionality issues by showing what data is being sent and received.
+- Adaptation and modification: By using request interception, you can adapt the behavior of your Evilginx server depending on the data received, for example, change messages or redirects based on the contents of requests.
+[Low-level network interception library](https://github.com/mswjs/interceptors) 
+
+  
 
 >### info
 Also, all additional information is listed in the "issues" section. Read, ask your questions, share your knowledge in the Discussion section.

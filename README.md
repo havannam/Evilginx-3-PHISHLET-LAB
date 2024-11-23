@@ -88,11 +88,6 @@ Content Customization: The user can customize text, images, and other elements t
 Integration with Burp Suite: The module can be integrated into Burp Suite to facilitate the testing and vulnerability analysis process.
 Automation: Allows you to quickly create many phishlets for different scenarios.]
 ________________________________________
-
-
-
-
-
 #### Adding "interceptors" to Evilginx // 
 ________________________________________
 - You will be able to monitor and analyze HTTP requests and WebSocket messages that pass through your Evilginx server. This can help in understanding user behavior and identifying potential vulnerabilities.

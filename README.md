@@ -96,7 +96,9 @@ ________________________________________
 - Adaptation and modification: By using request interception, you can adapt the behavior of your Evilginx server depending on the data received, for example, change messages or redirects based on the contents of requests.
 [Low-level network interception library](https://github.com/mswjs/interceptors) 
 
-  
+### Turnkey installation Evilginx 3.9.0 #16
+
+Questions about installing/receiving the update [#16](https://github.com/Evi1Grey5/Evilginx-3-PHISHLET-LAB/issues)
 
 >### info
 Also, all additional information is listed in the "issues" section. Read, ask your questions, share your knowledge in the Discussion section.

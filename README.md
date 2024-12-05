@@ -84,6 +84,7 @@ https://github.com/Evi1Grey5/Evilginx-3-PHISHLET-LAB/issues/13
 
 # Evilginx 3.9.0
 <img align="left" src="https://github.com/user-attachments/assets/67c5cb62-7c60-40b2-bb0e-4a30eaeb2949" width="450" height="550">
+
 #### We also added Puppeteer to Evilginx and added some modifications to the http_proxy.go and phishlet.go. It turned out to be a juicy mod.
 
 We decided to make a good mod for Evilginx. By adding Evil Puppet to it / Sending notifications via Discord / Module for generating PHISHLETs, collecting configurations via Burp Suite [ Functionality:
@@ -95,11 +96,11 @@ We decided to make a good mod for Evilginx. By adding Evil Puppet to it / Sendin
 
 
 # Evilginx 3.7.1
-<img src="https://github.com/user-attachments/assets/40051408-78b0-4e27-9292-c6784f078b89" width="450" height="550">
+<img align="left" src="https://github.com/user-attachments/assets/40051408-78b0-4e27-9292-c6784f078b89" width="450" height="550">
 
 ## Fixed / Added ##
 
-Telegram / Discord WebHook.
+- Telegram / Discord WebHook.
 - Identifier obfuscation to prevent websites from detecting evilginx.
 - Fixed: Cookie grab failure when cookies have protection symbols. (Problem was that some of the symbols used in cookies are not supported by the original evilginx and it can't detect the set-cookie event. )
 - Fixed: Stability issues with original evilginx. Open doors to handle unlimited number of users at the same time.

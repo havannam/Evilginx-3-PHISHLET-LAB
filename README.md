@@ -95,10 +95,12 @@ We decided to make a good mod for Evilginx. By adding Evil Puppet to it / Sendin
 - Automation: Allows you to quickly create many phishlets for different scenarios.]
 
 
+
+
 # Evilginx 3.7.1
 <img align="left" src="https://github.com/user-attachments/assets/40051408-78b0-4e27-9292-c6784f078b89" width="450" height="550">
 
-## Fixed / Added ##
+#### Fixed / Added
 
 - Telegram / Discord WebHook.
 - Identifier obfuscation to prevent websites from detecting evilginx.

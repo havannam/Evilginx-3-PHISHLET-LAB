@@ -69,24 +69,49 @@ evilpuppet:
       post_re: 'recaptcha_token=([^&]*)'
       abort: true
 ```
-
-
 #5 Puppeteer integration with Evilginx 
 
 Evilginx X Puppeteer
 https://github.com/Evi1Grey5/Evilginx-3-PHISHLET-LAB/issues/13
 
+## Evilginx Labs by [Evi1Grey5]
+
+<div align="center">
+  <a href="https://www.veed.io/view/6859392c-a7e7-4590-bfa2-682d0431ea85?panel=quality-survey"><img src="https://github.com/user-attachments/assets/b21580a1-db99-45a1-b497-38a61f7118b1" alt="IMAGE ALT TEXT"></a>
+</div>
+
+<mp4 src="https://www.veed.io/view/6859392c-a7e7-4590-bfa2-682d0431ea85?panel=quality-survey">
+
 # Evilginx 3.9.0
 <img align="left" src="https://github.com/user-attachments/assets/67c5cb62-7c60-40b2-bb0e-4a30eaeb2949" width="450" height="550">
 #### We also added Puppeteer to Evilginx and added some modifications to the http_proxy.go and phishlet.go. It turned out to be a juicy mod.
 
-________________________________________
 We decided to make a good mod for Evilginx. By adding Evil Puppet to it / Sending notifications via Discord / Module for generating PHISHLETs, collecting configurations via Burp Suite [ Functionality:
 
-Template Generation: The module can create various violet templates that mimic legitimate websites.
-Content Customization: The user can customize text, images, and other elements to make the phishlet more believable.
-Integration with Burp Suite: The module can be integrated into Burp Suite to facilitate the testing and vulnerability analysis process.
-Automation: Allows you to quickly create many phishlets for different scenarios.]
+- Template Generation: The module can create various violet templates that mimic legitimate websites.
+- Content Customization: The user can customize text, images, and other elements to make the phishlet more believable.
+- Integration with Burp Suite: The module can be integrated into Burp Suite to facilitate the testing and vulnerability analysis process.
+- Automation: Allows you to quickly create many phishlets for different scenarios.]
+
+
+# Evilginx 3.7.1
+<img src="https://github.com/user-attachments/assets/40051408-78b0-4e27-9292-c6784f078b89" width="450" height="550">
+
+## Fixed / Added ##
+
+Telegram / Discord WebHook.
+- Identifier obfuscation to prevent websites from detecting evilginx.
+- Fixed: Cookie grab failure when cookies have protection symbols. (Problem was that some of the symbols used in cookies are not supported by the original evilginx and it can't detect the set-cookie event. )
+- Fixed: Stability issues with original evilginx. Open doors to handle unlimited number of users at the same time.
+- Fully obfuscated hardcoded http_proxy.go file that is not readable to prevent fast red-flag on domains.
+- Capture and proxying captcha / re / h /v2,v3.
+
+- Cloudflare: Required if site has Cloudflare Anti-DDoS page enabled.
+- BotGuard: Required for sites like Google (verified, trusted accounts), Microsoft o365 (some of) 3rd parties login pages usually big companies or extra protection without it lets say only 70% accounts would work etc etc.
+- hCaptcha, recaptcha - Required for sites that have hCaptcha, recaptcha on forms or as Anti-Ddos.
+- GeeTest: Needed for crypto websites like Binance, Coinbase, Blockchain etc etc
+- Custom JS: Required for sites that have their own protection for certain actions.
+
 ________________________________________
 ### Adding "interceptors" to Evilginx // 
 ________________________________________

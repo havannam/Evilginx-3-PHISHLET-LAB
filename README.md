@@ -9,6 +9,10 @@ __Preface:__ At the moment, there are a very large number of scammers who sell p
 ### #Installation Steps​
 Learn how to install Evilginx locally or deploy it on a remote server [Deployment](https://help.evilginx.com/docs/category/deployment) / Learn how to set up Evilginx and run your first phishing campaign [Quick Start](https://help.evilginx.com/docs/getting-started/quick-start) / Learn how to use Evilginx [Guides](https://help.evilginx.com/docs/category/guides) __[ CONFIG X PHISHLETS X LURES X REDIRECTORS X SESSIONS X PROXY X BLACKLIST ]__
 
+#### Which PHISHLETs are currently available have been tested on our versions 3.7.1 - 3.9.0.
+
+##### [ Google x Binance x Blockchain x Coinbase x Bitmedia x PayPal x Telegram x Proton x Dropbox x Payeer ]
+
 ### #Phishlet Format (v3.0.0-vX.X.X)
 
 Phishlets are configuration files in YAML format. If you need to get familiar with YAML, first, you can find some good overview here: [YAML Syntax](https://docs.ansible.com/ansible/latest/reference_appendices/YAMLSyntax.html) 

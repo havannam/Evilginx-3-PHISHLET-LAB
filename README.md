@@ -73,6 +73,60 @@ evilpuppet:
       post_re: 'recaptcha_token=([^&]*)'
       abort: true
 ```
+#### Installation Steps​
+Update Package Lists​
+
+Begin by updating your system’s package lists to ensure you have the latest information on the newest versions of packages and their dependencies.
+```
+sudo apt-get update
+```
+Install xrandr​
+
+xrandr is a utility for managing screen resolutions and display settings.
+
+-- Use this option if you want to run Playwright with Xserver (for example, in MobaXterm) so you can view the browser live.
+-- If use "Headless: playwright.Bool(true)," do no need this to install.
+```
+sudo apt-get install x11-xserver-utils  
+```
+#### Install Google Chrome
+
+-- Use Chrome only if you choose not to use the browsers included in the Playwright app. In the source you received, you don’t need these installations.​
+
+Download and install the latest stable version of Google Chrome.
+```
+wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+sudo dpkg -i google-chrome-stable_current_amd64.deb
+sudo apt-get install -f # Install any missing dependencies
+```
+#### Install Go Programming Language
+
+-- You will need to install the Go language, as the source code is in Go, and to compile it in Linux, you need Go installed.​
+Go is essential for running Playwright-Go.
+
+```
+wget https://golang.org/dl/go1.23.4.linux-amd64.tar.gz
+sudo rm -rf /usr/local/go
+sudo tar -C /usr/local -xzf go1.23.4.linux-amd64.tar.gz
+export PATH=$PATH:/usr/local/go/bin
+go version
+```
+#### Install Playwright-Go and Dependencies
+
+-- You need to install the Playwright Go library, as the Evilginx version for Google uses a module called EvilPlaywright. This module controls a real browser behind the reverse proxy to obtain certain tokens that otherwise cannot be retrieved correctly due to the different host in the reverse proxy or due to Google detecting browser incompatibilities with video versions, fonts, etc.​
+Set up Playwright-Go, which is required for browser automation.
+
+```
+go get -u github.com/playwright-community/playwright-go
+go run github.com/playwright-community/playwright-go/cmd/playwright@latest install --with-deps
+go install github.com/playwright-community/playwright-go/cmd/playwright@latest
+playwright install --with-dep
+```
+##### Working with Google or other complex sites is possible when installing all libraries and components integrated with EVILGINX.
+<div align="center">
+<a href="https://www.veed.io/view/b8859127-37b4-4c59-b8e7-b2d801691d16?panel=share"><img src="https://github.com/user-attachments/assets/57c265c2-27c7-4fec-b63b-2a6559b481e4" alt="IMAGE ALT TEXT"></a>
+</div>
+
 #5 Puppeteer integration with Evilginx 
 
 Evilginx X Puppeteer

